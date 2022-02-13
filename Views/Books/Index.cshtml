@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BookWebAPI.Model.Books>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddOrEdit" class="btn btn-default"><i class="fa-solid fa-circle-plus"></i> Create and Update</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            @*
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
+        </th>
+            *@
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RepTimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookDescription)
+            </th>
+            <th></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.BookId)
+                    </td>
+                *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepTimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookDescription)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.BookId"><i class="fa fa-marker fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var sucMSg = '@TempData["SuccessMessage"]'
+            if (sucMSg != '')
+                alertify.success(sucMSg);
+        });
+    </script>
+}

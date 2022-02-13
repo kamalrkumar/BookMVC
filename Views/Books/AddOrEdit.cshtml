@@ -1,0 +1,65 @@
+﻿@model BookWebAPI.Model.Books
+
+@{
+     ViewBag.Title = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4>Books Add/Edit Form</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label"></label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label"></label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepTimeStamp" class="control-label"></label>
+                <input asp-for="RepTimeStamp" class="form-control" />
+                <span asp-validation-for="RepTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookCategory" class="control-label"></label>
+                <select class="form-control" id="BookCategory" name="BookCategory">
+                    <option>Thriller</option>
+                    <option>History</option>
+                    <option>Drama</option>
+                    <option>Biography</option>
+                </select>                
+                <span asp-validation-for="BookCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookDescription" class="control-label"></label>
+                <input asp-for="BookDescription" class="form-control" />
+                <span asp-validation-for="BookDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="reset" value="Reset" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-4">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"> <i class="fa fa-table"> List</i></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
